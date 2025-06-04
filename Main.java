@@ -1,7 +1,7 @@
 import java.util.Scanner;
 
 public class Main {
-    static Scanner leer_dato = new Scanner(System.in);
+    static Scanner teclado = new Scanner(System.in);
 
     public static void main(String[] args){
                 //Nodo subarbolIzquierdo = new Nodo(5, null, null);
@@ -28,10 +28,12 @@ public class Main {
             System.out.println("\n============= [ MENÚ ] =============");
             System.out.println("1. Ingresar por matriz de Adyacencia");
             System.out.println("2. Ingresar por matriz de Incidencia");
+            System.out.println("3. Ingresar datos para generar Árbol ID3");
+
             System.out.println("0. Salir");
 
 
-            opcion = leer_dato.nextInt();
+            opcion = teclado.nextInt();
             
             switch (opcion) {
                 case 1:
@@ -45,6 +47,10 @@ public class Main {
                 case 0:
                     System.out.println("Programa finalizado");
                     break;
+                case 3:
+                    ArbolID3.ejecutar();
+                    break;
+
             
                 default:
                     System.out.println("¡Opción inválida!");
@@ -53,12 +59,12 @@ public class Main {
 
         }while(opcion != 0);
         
-        leer_dato.close();
+        teclado.close();
     }
 
     public static void ingresarMatrizAdyacencia(){
             System.out.println("Ingresar el número de nodos");
-            int n = leer_dato.nextInt();
+            int n = teclado.nextInt();
 
             int[][] matriz = new int[n][n];
             int[] valores = new int[n];
@@ -66,14 +72,14 @@ public class Main {
             System.out.println("Ingrese los valores de los nodos:");
             for(int i = 0 ;i < n ; i++){
                 System.out.print("Valor del nodo " + i + " : ");
-                valores[i] = leer_dato.nextInt();
+                valores[i] = teclado.nextInt();
             }
 
             System.out.println("Ingrese la matriz de adyacencia:");
             for(int i = 0; i < n ;i++){
                 for(int j = 0; j < n ; j++){
                     System.out.print("¿Existe conexion de " + valores[i] + " a " + valores[j] + " ? (0/1): ");
-                    matriz[i][j] = leer_dato.nextInt();
+                    matriz[i][j] = teclado.nextInt();
                 }
             }
 
@@ -90,10 +96,10 @@ public class Main {
 
     public static void ingresarMatrizIncidencia(){
         System.out.println("Ingresar el número de nodos");
-        int n = leer_dato.nextInt();
+        int n = teclado.nextInt();
 
         System.out.println("Ingresar el número de aristas");
-        int m = leer_dato.nextInt();
+        int m = teclado.nextInt();
 
 
         int[][] matriz = new int[n][m];
@@ -103,14 +109,14 @@ public class Main {
 
         for(int i = 0; i < n ;i++){
             System.out.print("Valor del nodo " + i + ": ");
-            valores[i] = leer_dato.nextInt();
+            valores[i] = teclado.nextInt();
         }
         
         System.out.println("Ingrese la matriz de incidencia (-1: origen, 1: destino, 0: vacio):");
         for(int j = 0; j < m; j++){
             for(int i = 0; i < n ; i++){
                 System.out.print("T|[" + i + "][" + j +"]: ");
-                matriz[i][j] = leer_dato.nextInt();
+                matriz[i][j] = teclado.nextInt();
             }
         }
 
