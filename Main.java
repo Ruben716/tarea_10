@@ -4,24 +4,7 @@ public class Main {
     static Scanner teclado = new Scanner(System.in);
 
     public static void main(String[] args){
-                //Nodo subarbolIzquierdo = new Nodo(5, null, null);
-        //Nodo nodo12 = new Nodo(12, null, null);
-        //Nodo nodo20 = new Nodo(20, null, null);
-
-        //Nodo nodo15 = new Nodo(15, nodo12, nodo20);
-        //Nodo nodo5 = new Nodo(5, null, null);
-
-        //Nodo raiz = new Nodo(10, nodo5,nodo15);
-
-        //ArbolBinario arbol = new ArbolBinario(raiz);
-
-        //arbol.imprimirArbol();
-
-        //arbol.raiz =new Nodo(1,subarbolIzquierdo,subarbolDerecho);
-
-        //System.out.println("Arbol binario credo con T = (1,5,10)");
-
-        //arbol.imprimirArbol(arbol.raiz);
+              
         int opcion;
         
         do{

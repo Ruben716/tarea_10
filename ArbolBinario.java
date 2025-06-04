@@ -1,4 +1,5 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ArbolBinario
 {
@@ -8,46 +9,13 @@ public class ArbolBinario
         this.raiz=raiz;
     }
 
-    /**
-     * 
-     */
     public void imprimirArbol()
     {
         int altura = calcularAltura(raiz);
-        //Queue<Nodo> cola = new LinkedList<>();
         List<Nodo> nivel = new ArrayList<>();
-        //cola.add(raiz) ;
+        
         nivel.add(raiz);
 
-        /*
-        int nivelActual = 1;
-
-        while (nivelActual <= altura){
-            int nodosNivel = (int)Math.pow(2, nivelActual -1);
-            int espacio = (int)Math.pow(2, altura - nivelActual + 1);
-
-            imprimirEspacios(espacio);
-
-            for(int i=0;i<nodosNivel;i++)
-            {
-                Nodo actual = cola.poll();
-                if(actual != null)
-                {
-                    System.out.print(actual.dato);
-                    cola.add(actual.izquierdo);
-                    cola.add(actual.derecho);
-                    cola.add(null);
-                    cola.add(null);
-                }
-                
-            }
-            imprimirEspacios(espacio);
-                System.out.println();
-                if (nivelActual != altura) {
-                    imprimirRamas(cola,altura-nivelActual);
-                }
-            nivelActual++;    
-        }*/
         int anchoTotal = (int)Math.pow(2, altura + 2);
 
         for(int i = 0; i < altura ; i++)
@@ -87,19 +55,14 @@ public class ArbolBinario
         System.out.println();
     }
 
-    //private void imprimirRamas(Queue<Nodo> cola, int espacios) {
+    
     private void imprimirRamas(List<Nodo> nivel, int espacio_inicial, int espacios) {    
-        //int cantidad = cola.size();
+        
         int alturaRama = 1;
-        //for(int i = 0;i<cantidad;i++)
+        
         for(int i = 1; i <= alturaRama ; i++)
         {
-            //imprimirEspacios(cantidad);
-            //Nodo izquierda = cola.poll();
-            //Nodo derecho = cola.poll();
-            //System.out.print("/");
-            //System.out.print(" ");
-            //System.out.println();
+            
             imprimirEspacios(espacio_inicial - 1);
             for(Nodo nodo : nivel)
             {
@@ -110,21 +73,11 @@ public class ArbolBinario
                 }
 
                 System.out.print(nodo.izquierdo != null ? "/" : " ");
-                //if(nodo.izquierdo != null)
-                //{
-                //    System.out.print("/");
-                //}else{
-                //    System.out.print(" ");
-                //}
+                
                 imprimirEspacios( 2 * i - i);
 
                 System.out.print(nodo.derecho != null ? "\\" : " ");
-                //if(nodo.izquierdo != null)
-                //{
-                //    System.out.print("/");
-                //}else{
-                //    System.out.print(" ");
-                //}
+                
                 imprimirEspacios( espacios - (2 * i + i));
             }
             System.out.println();

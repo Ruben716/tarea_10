@@ -2,9 +2,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class NodoID3 {
-    String atributo; // Nombre del atributo, o valor de clase si es hoja
+    String atributo; 
     boolean esHoja;
-    String clase; // Solo si es hoja
+    String clase; 
     Map<String, NodoID3> hijos;
 
     public NodoID3(String atributo) {
