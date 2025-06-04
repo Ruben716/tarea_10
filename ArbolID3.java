@@ -46,7 +46,8 @@ public class ArbolID3 {
 
         NodoID3 raiz = construirArbol(ejemplos, atributos.subList(0, atributos.size() - 1), atributoClase);
         System.out.println("\nÁrbol ID3 generado:\n");
-        imprimirArbol(raiz, "");
+        imprimirArbol(raiz, "", "");
+
     }
 
     public static NodoID3 construirArbol(List<Map<String, String>> datos, List<String> atributos, String atributoClase) {
@@ -156,15 +157,23 @@ public class ArbolID3 {
         return entropia;
     }
 
-    public static void imprimirArbol(NodoID3 nodo, String prefijo) {
-        if (nodo.esHoja) {
-            System.out.println(prefijo + "→ Clase: " + nodo.clase);
-            return;
-        }
-
-        for (Map.Entry<String, NodoID3> entrada : nodo.hijos.entrySet()) {
-            System.out.println(prefijo + "[" + nodo.atributo + " = " + entrada.getKey() + "]");
-            imprimirArbol(entrada.getValue(), prefijo + "  ");
-        }
+    public static void imprimirArbol(NodoID3 nodo, String prefijo, String conector) {
+    if (nodo.esHoja) {
+        System.out.println(prefijo + conector + "→ Clase: " + nodo.clase);
+        return;
     }
+
+    int totalHijos = nodo.hijos.size();
+    int i = 0;
+
+    for (Map.Entry<String, NodoID3> entrada : nodo.hijos.entrySet()) {
+        boolean esUltimo = (++i == totalHijos);
+        String nuevoConector = esUltimo ? "└── " : "├── ";
+        String nuevoPrefijo = prefijo + (esUltimo ? "    " : "│   ");
+
+        System.out.println(prefijo + conector + nodo.atributo + " = " + entrada.getKey());
+        imprimirArbol(entrada.getValue(), nuevoPrefijo, nuevoConector);
+    }
+}
+
 }
