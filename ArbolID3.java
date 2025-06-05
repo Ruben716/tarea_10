@@ -163,17 +163,23 @@ public class ArbolID3 {
         return;
     }
 
+    if (conector.equals("")) {
+        System.out.println(nodo.atributo);
+    }
+
     int totalHijos = nodo.hijos.size();
     int i = 0;
 
     for (Map.Entry<String, NodoID3> entrada : nodo.hijos.entrySet()) {
         boolean esUltimo = (++i == totalHijos);
         String nuevoConector = esUltimo ? "└── " : "├── ";
-        String nuevoPrefijo = prefijo + (esUltimo ? "    " : "│   ");
+        System.out.println(prefijo + nuevoConector + entrada.getKey());
 
-        System.out.println(prefijo + conector + nodo.atributo + " = " + entrada.getKey());
-        imprimirArbol(entrada.getValue(), nuevoPrefijo, nuevoConector);
+        String nuevoPrefijo = prefijo + (esUltimo ? "    " : "│   ");
+        imprimirArbol(entrada.getValue(), nuevoPrefijo, "");
     }
 }
+
+
 
 }
